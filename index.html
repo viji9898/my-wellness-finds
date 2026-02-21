@@ -8,6 +8,27 @@
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Netlify Forms: hidden form for build-time detection -->
+    <form
+      name="notify"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="notify" />
+      <input name="bot-field" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <select name="role">
+        <option>Seeker</option>
+        <option>Practitioner</option>
+        <option>Brand</option>
+        <option>Other</option>
+      </select>
+    </form>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

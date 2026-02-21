@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import NotifyStickyForm from "./components/NotifyStickyForm";
 
 export default function App() {
   const [form, setForm] = useState({ name: "", email: "", role: "Seeker" });
@@ -213,20 +214,6 @@ export default function App() {
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-  async function onSubmit(e) {
-    e.preventDefault();
-    setStatus({ type: "loading", msg: "" });
-
-    // Next step: wire to storage (Airtable / Supabase / email tool)
-    await new Promise((r) => setTimeout(r, 500));
-
-    setStatus({
-      type: "success",
-      msg: "You’re on the list. We’ll email you at launch.",
-    });
-    setForm((f) => ({ ...f, name: "", email: "" }));
-  }
-
   return (
     <div style={styles.page}>
       <div style={styles.container}>
@@ -347,83 +334,13 @@ export default function App() {
         </div>
       </div>
 
-      <div style={styles.stickyBar}>
-        <div style={styles.stickyInner}>
-          <section id="notify" style={styles.stickyCard}>
-            <h3 style={{ ...styles.panelTitle, margin: "0 0 4px" }}>
-              Get notified at launch
-            </h3>
-            <div style={styles.subtle}>
-              No spam. Just launch updates + early access.
-            </div>
-
-            <form
-              onSubmit={onSubmit}
-              style={{ marginTop: 10 }}
-              autoComplete="on"
-            >
-              <div style={styles.formGrid}>
-                <input
-                  style={styles.input}
-                  placeholder="Name"
-                  name="name"
-                  autoComplete="name"
-                  value={form.name}
-                  onChange={(e) =>
-                    setForm((f) => ({ ...f, name: e.target.value }))
-                  }
-                  required
-                />
-                <input
-                  style={styles.input}
-                  placeholder="Email"
-                  type="email"
-                  name="email"
-                  autoComplete="email"
-                  value={form.email}
-                  onChange={(e) =>
-                    setForm((f) => ({ ...f, email: e.target.value }))
-                  }
-                  required
-                />
-                <select
-                  style={styles.input}
-                  name="role"
-                  autoComplete="organization-title"
-                  value={form.role}
-                  onChange={(e) =>
-                    setForm((f) => ({ ...f, role: e.target.value }))
-                  }
-                >
-                  <option>Seeker</option>
-                  <option>Practitioner</option>
-                  <option>Brand</option>
-                  <option>Other</option>
-                </select>
-                <button
-                  style={styles.btnPrimary}
-                  disabled={status.type === "loading"}
-                >
-                  {status.type === "loading" ? "Saving..." : "Notify me"}
-                </button>
-              </div>
-
-              {status.type === "success" && (
-                <div
-                  style={{
-                    marginTop: 10,
-                    fontSize: 13,
-                    color: "#2f6f4e",
-                    fontWeight: 600,
-                  }}
-                >
-                  {status.msg}
-                </div>
-              )}
-            </form>
-          </section>
-        </div>
-      </div>
+      <NotifyStickyForm
+        styles={styles}
+        form={form}
+        setForm={setForm}
+        status={status}
+        setStatus={setStatus}
+      />
     </div>
   );
 }
