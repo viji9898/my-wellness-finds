@@ -46,7 +46,9 @@ export default function NotifyStickyForm({
         <h3 style={{ ...styles.panelTitle, margin: "0 0 4px" }}>
           Get notified at launch
         </h3>
-        <div style={styles.subtle}>No spam. Just launch updates + early access.</div>
+        <div style={styles.subtle}>
+          No spam. Just launch updates + early access.
+        </div>
 
         <form
           name="notify"
@@ -82,7 +84,9 @@ export default function NotifyStickyForm({
               name="email"
               autoComplete="email"
               value={form.email}
-              onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+              onChange={(e) =>
+                setForm((f) => ({ ...f, email: e.target.value }))
+              }
               required
             />
             <select
@@ -97,7 +101,10 @@ export default function NotifyStickyForm({
               <option>Brand</option>
               <option>Other</option>
             </select>
-            <button style={styles.btnPrimary} disabled={status.type === "loading"}>
+            <button
+              style={styles.btnPrimary}
+              disabled={status.type === "loading"}
+            >
               {status.type === "loading" ? "Saving..." : "Notify me"}
             </button>
           </div>
@@ -151,5 +158,4 @@ export default function NotifyStickyForm({
       </div>
     </div>
   );
-
 }
