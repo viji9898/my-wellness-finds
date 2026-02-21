@@ -46,7 +46,7 @@ export default function App() {
         margin: "0 auto",
         padding: "32px 20px 56px",
         paddingBottom: isMobile
-          ? "calc(380px + env(safe-area-inset-bottom))"
+          ? "calc(56px + env(safe-area-inset-bottom))"
           : "calc(260px + env(safe-area-inset-bottom))",
       },
       nav: {
@@ -336,6 +336,7 @@ export default function App() {
 
       <NotifyStickyForm
         styles={styles}
+        isMobile={isMobile}
         form={form}
         setForm={setForm}
         status={status}
