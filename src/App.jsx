@@ -2,7 +2,11 @@ import { useEffect, useMemo, useState } from "react";
 import NotifyStickyForm from "./components/NotifyStickyForm";
 
 export default function App() {
-  const [form, setForm] = useState({ name: "", email: "", role: "Seeker" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    role: "Practitioner",
+  });
   const [status, setStatus] = useState({ type: "idle", msg: "" });
 
   const [isMobile, setIsMobile] = useState(() => {
@@ -237,53 +241,49 @@ export default function App() {
 
         <section style={styles.hero}>
           <h1 style={styles.h1}>
-            Discover wellness in Athens — curated, trusted, local.
+            Get discovered in Athens — a curated directory for wellness
+            practitioners.
           </h1>
           <p style={styles.p}>
-            My Wellness Finds is building a premium directory of wellness
-            practitioners across Athens. Launching soon. Join early to get
-            featured (practitioners) or get first access (seekers).
+            My Wellness Finds is building a premium, Athens-first directory for
+            standout practitioners across modalities. Launching soon — apply to
+            be featured and get early visibility.
           </p>
 
           <div style={styles.ctas}>
             <button
               style={styles.btnPrimary}
-              onClick={() => scrollToForm("Seeker")}
-            >
-              Get early access
-            </button>
-            <button
-              style={styles.btn}
               onClick={() => scrollToForm("Practitioner")}
             >
-              Join as a practitioner
+              Apply to be featured
+            </button>
+            <button style={styles.btn} onClick={() => scrollToForm("Seeker")}>
+              Get early access (seekers)
             </button>
           </div>
 
           <div style={styles.subtle}>
-            Curated • Community-led • Athens-first
+            Practitioner-first • Curated • Athens-first
           </div>
         </section>
 
         <section style={styles.grid}>
           <div style={styles.card}>
-            <div style={styles.cardTitle}>1. Curated discovery</div>
+            <div style={styles.cardTitle}>1. Premium visibility</div>
             <p style={styles.cardText}>
-              We highlight standout practitioners across modalities and
-              specialties.
+              Be featured in a curated directory built for quality and trust.
             </p>
           </div>
           <div style={styles.card}>
-            <div style={styles.cardTitle}>2. Direct connection</div>
+            <div style={styles.cardTitle}>2. The right clients</div>
             <p style={styles.cardText}>
-              Find the right fit and connect fast — no noise, no endless
-              scrolling.
+              Help the right people find you fast — without noisy marketplaces.
             </p>
           </div>
           <div style={styles.card}>
             <div style={styles.cardTitle}>3. More opportunities</div>
             <p style={styles.cardText}>
-              We help practitioners get visibility, collaborations, and work.
+              Get opportunities for collaborations, features, and bookings.
             </p>
           </div>
         </section>
